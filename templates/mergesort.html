@@ -1,0 +1,169 @@
+{% extends "base.html" %}
+{% block title %}Merge Sort{% endblock %}
+{% block content %}
+<div class="container">
+    <h1>Merge Sort</h1>
+    
+    <div class="mini-container">
+        <h3>Main Logic</h3>
+        <p>
+            Merge Sort is a divide and conquer algorithm that divides the input array into two halves, calls itself for the two halves, 
+            and then merges the two sorted halves. The merge() function is used for merging two halves. The merge(arr, l, m, r) is a 
+            key process that assumes that arr[l..m] and arr[m+1..r] are sorted and merges the two sorted sub-arrays into one.
+        </p>
+        <p>
+            The algorithm recursively divides the array into two halves until each sub-array contains a single element. Once the base case 
+            is reached, the merge process begins, combining smaller sorted arrays into larger sorted arrays until the entire array is sorted.
+        </p>
+    </div>
+
+    <div class="code-container">
+        <h2>Merge Sort Example Code</h2>
+        <pre id="algorithmCode">
+def merge_sort(arr):
+    if len(arr) > 1:
+        mid = len(arr) // 2
+        left_half = arr[:mid]
+        right_half = arr[mid:]
+
+        merge_sort(left_half)
+        merge_sort(right_half)
+
+        i = j = k = 0
+
+        while i < len(left_half) and j < len(right_half):
+            if left_half[i] < right_half[j]:
+                arr[k] = left_half[i]
+                i += 1
+            else:
+                arr[k] = right_half[j]
+                j += 1
+            k += 1
+
+        while i < len(left_half):
+            arr[k] = left_half[i]
+            i += 1
+            k += 1
+
+        while j < len(right_half):
+            arr[k] = right_half[j]
+            j += 1
+            k += 1
+
+    return arr
+        </pre>
+    </div>
+    
+    <div class="mini-container">
+        <h3>Depends on Structure or Content?</h3>
+        <p>
+            Merge Sort depends on the structure of the data being sorted. The initial arrangement of elements can affect the efficiency 
+            of the merging process. However, it maintains a consistent time complexity regardless of the structure.
+        </p>
+    </div>
+    
+    <div class="mini-container">
+        <h3>In-Place?</h3>
+        <p>
+            No, Merge Sort is not an in-place sorting algorithm. It requires additional memory space to store the auxiliary arrays used for merging the divided parts.
+        </p>
+    </div>
+
+    <div class="mini-container">
+        <h3>Comparison/Counting Sort Algorithm?</h3>
+        <p>
+            Merge Sort is a comparison-based sorting algorithm. It determines the order of elements by comparing them.
+        </p>
+    </div>
+
+    <div class="mini-container">
+        <h3>Algorithmic Approach</h3>
+        <p>
+            Merge Sort follows a "Divide and Conquer" strategy. It recursively divides the array into two halves, sorts each half, 
+            and then merges the sorted halves to produce the final sorted array.
+        </p>
+    </div>
+
+    <div class="mini-container">
+        <h3>Time Complexity</h3>
+        <p>
+            The time complexity of Merge Sort is O(n log n) in the best, average, and worst cases. This is because the array is divided into 
+            halves logarithmically, and each division step takes linear time to merge the halves.
+        </p>
+    </div>
+    
+    <div class="mini-container">
+        <h3>Space Complexity</h3>
+        <p>
+            The space complexity of Merge Sort is O(n), as it requires additional memory for the temporary arrays used during the merge process.
+        </p>
+    </div>
+    
+    <div class="mini-container">
+        <h3>Stability</h3>
+        <p>
+            Merge Sort is a stable sorting algorithm. It preserves the relative order of records with equal keys.
+        </p>
+    </div>
+
+    <div class="mini-container">
+        <h3>Summary Table</h3>
+        <div class="summary-table-container">
+            <table class="summary-table">
+                <tr>
+                    <th>Property</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Algorithm Type</td>
+                    <td>External</td>
+                </tr>
+                <tr>
+                    <td>In-Place?</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>Time Complexity (Best Case)</td>
+                    <td>O(n log n)</td>
+                </tr>
+                <tr>
+                    <td>Time Complexity (Average Case)</td>
+                    <td>O(n log n)</td>
+                </tr>
+                <tr>
+                    <td>Time Complexity (Worst Case)</td>
+                    <td>O(n log n)</td>
+                </tr>
+                <tr>
+                    <td>Space Complexity</td>
+                    <td>O(n)</td>
+                </tr>
+                <tr>
+                    <td>Stability</td>
+                    <td>Stable</td>
+                </tr>
+                <tr>
+                    <td>Depends on Structure or Content?</td>
+                    <td>Depends on Structure</td>
+                </tr>
+                <tr>
+                    <td>Comparison/Counting Sort Algorithm?</td>
+                    <td>Comparison-Based</td>
+                </tr>
+                <tr>
+                    <td>Algorithmic Approach</td>
+                    <td>Divide and Conquer</td>
+                </tr>
+            </table>
+        </div>
+    </div>    
+
+    <div class="mini-container">
+        <h3>Sorting Visualizer</h3>
+        <p>
+            Visualize this sorting algorithm and different other sorting algorithms in action. See this sorting algorithm others operate on your data.
+            Customize the data-values and control the visualization speed to enhance your learning experience.
+        </p>
+        <a href="{{ url_for('sorting_page') }}" class="button">Explore Sorting Visualizer</a>
+    </div>     
+{% endblock %}

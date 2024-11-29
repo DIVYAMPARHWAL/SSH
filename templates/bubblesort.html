@@ -1,0 +1,163 @@
+{% extends "base.html" %}
+{% block title %}Bubble Sort{% endblock %}
+{% block content %}
+<div class="container">
+    <h1>Bubble Sort</h1>
+    
+    <div class="mini-container">
+        <h3>Main Logic</h3>
+        <p>
+            Bubble Sort is a simple comparison-based sorting algorithm that works by repeatedly traversing the list to be sorted.
+            It compares each pair of adjacent items and swaps them if they are in the wrong order. The algorithm continues to iterate 
+            through the list until no swaps are needed, indicating that the list is sorted. This method ensures that the largest unsorted 
+            element "bubbles up" to its correct position in each iteration.
+        </p>
+        <p>
+            The algorithm consists of nested loops, where the outer loop controls the number of passes through the list, and the inner loop 
+            performs the comparisons and swaps. This results in a time complexity of O(n²) in the average and worst-case scenarios, making it 
+            inefficient for large data sets.
+        </p>
+    </div>
+
+    <div class="code-container">
+        <h2>Bubble Sort Example Code</h2>
+        <pre id="algorithmCode">
+def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        for j in range(0, n-i-1):
+            if arr[j] > arr[j+1]:
+                arr[j], arr[j+1] = arr[j+1], arr[j]
+    return arr
+        </pre>
+    </div>
+    
+    <div class="mini-container">
+        <h3>Depends on Structure or Content?</h3>
+        <p>
+            Bubble Sort depends on both the structure and content of the data being sorted. The initial arrangement of the elements affects 
+            the number of comparisons and swaps required to sort the list. If the elements are nearly sorted, the algorithm can perform 
+            efficiently, requiring fewer passes. Conversely, if the elements are in a completely random order, it will require more iterations 
+            to sort the list completely. The content, or the values of the elements themselves, also plays a role in determining how quickly 
+            the algorithm can sort the data.
+        </p>
+    </div>    
+    
+    <div class="mini-container">
+        <h3>In-Place?</h3>
+        <p>
+            Yes, Bubble Sort is an in-place sorting algorithm. This means it requires only a constant amount of additional memory space 
+            for its operation. The sorting is done by modifying the input array directly, without needing to create additional data structures 
+            for storage. This is an advantageous property for memory-constrained environments, although it doesn't significantly enhance the 
+            algorithm's overall performance.
+        </p>
+    </div>
+
+    <div class="mini-container">
+        <h3>Comparison/Counting Sort Algorithm?</h3>
+        <p>
+            Bubble Sort is a comparison-based algorithm, meaning that it determines the order of elements by comparing their values. 
+            Each adjacent pair of elements is compared, and swaps are made based on their order. This is different from counting sort, 
+            which is a non-comparison-based sorting algorithm that uses counting to determine the position of each element in the sorted 
+            order. While Bubble Sort is straightforward and easy to implement, it is generally less efficient than other sorting methods 
+            like Quick Sort or Merge Sort for larger data sets due to its O(n²) time complexity.
+        </p>
+    </div>
+    
+    <div class="mini-container">
+        <h3>Algorithmic Approach</h3>
+        <p>
+            Bubble Sort follows a strategy known as "Subtract and Conquer." This approach involves reducing the problem size in 
+            each step by sorting the elements gradually. In the context of Bubble Sort, the algorithm iteratively compares adjacent 
+            pairs of elements and "subtracts" those that are out of order by swapping them. As the algorithm progresses, 
+            larger elements "bubble up" to their correct positions at the end of the list, effectively reducing the unsorted portion 
+            of the array with each pass. This process continues until no more swaps are needed, indicating that the entire array is sorted. 
+            While the algorithm is simple and intuitive, it is not the most efficient for large datasets due to its O(n²) time complexity.
+        </p>
+    </div>
+
+    <div class="mini-container">
+        <h3>Time Complexity</h3>
+        <p>
+            The time complexity of Bubble Sort is O(n²) in the average and worst cases. This is because, in the worst-case scenario, 
+            every element needs to be compared with every other element. The best-case time complexity is O(n) when the array is already 
+            sorted, as the algorithm can terminate early after a single pass through the list.
+        </p>
+    </div>
+    
+    <div class="mini-container">
+        <h3>Space Complexity</h3>
+        <p>
+            The space complexity of Bubble Sort is O(1), as it only requires a constant amount of additional memory space for its operations. 
+            This efficiency in space usage makes it suitable for scenarios where memory overhead is a concern.
+        </p>
+    </div>
+    
+    <div class="mini-container">
+        <h3>Stability</h3>
+        <p>
+            Bubble Sort is a stable sorting algorithm, meaning that it preserves the relative order of records with equal keys. 
+            This characteristic is important in cases where the original order of elements matters, such as sorting objects based on multiple fields.
+        </p>
+    </div>
+
+    <div class="mini-container">
+        <h3>Summary Table</h3>
+        <div class="summary-table-container">
+            <table class="summary-table">
+                <tr>
+                    <th>Property</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Algorithm Type</td>
+                    <td>Internal</td>
+                </tr>
+                <tr>
+                    <td>In-Place?</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>Time Complexity (Best Case)</td>
+                    <td>O(n)</td>
+                </tr>
+                <tr>
+                    <td>Time Complexity (Average Case)</td>
+                    <td>O(n²)</td>
+                </tr>
+                <tr>
+                    <td>Time Complexity (Worst Case)</td>
+                    <td>O(n²)</td>
+                </tr>
+                <tr>
+                    <td>Space Complexity</td>
+                    <td>O(1)</td>
+                </tr>
+                <tr>
+                    <td>Stability</td>
+                    <td>Stable</td>
+                </tr>
+                <tr>
+                    <td>Depends on Structure or Content?</td>
+                    <td>Depends on both the Structure and Content</td>
+                </tr>
+                <tr>
+                    <td>Comparison/Counting Sort Algorithm?</td>
+                    <td>Comparison-Based</td>
+                </tr>
+                <tr>
+                    <td>Algorithmic Approach</td>
+                    <td>Subtract and Conquer</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="mini-container">
+        <h3>Sorting Visualizer</h3>
+        <p>
+            Visualize this sorting algorithm and different other sorting algorithms in action. See this sorting algorithm others operate on your data.
+            Customize the data-values and control the visualization speed to enhance your learning experience.
+        </p>
+        <a href="{{ url_for('sorting_page') }}" class="button">Explore Sorting Visualizer</a>
+    </div>      
+{% endblock %}

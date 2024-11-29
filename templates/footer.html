@@ -1,0 +1,139 @@
+<style>
+  footer {
+      margin-top: 0;
+      background-color: #b3aa90;
+      color: #000;
+      padding: 25px 25px;
+  }
+  
+  .footer-content {
+      display: flex;
+      justify-content: space-between;
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+      flex-wrap: wrap;
+  }
+  
+  .footer-section {
+      flex: 1;
+      min-width: 250px;
+      margin: 10px 0;
+  }
+  
+  .footer-logo img {
+      width: 220px;
+      height: 220px;
+  }
+  
+  .footer-links {
+      margin-bottom: 20px; 
+  }
+  
+  .footer-links h2 {
+      margin-bottom: 10px; 
+      color: #000; 
+  }
+  
+  .footer-links a {
+      display: block;
+      color: #000000;
+      text-decoration: none;
+      margin-bottom: 8px;
+  }
+  
+  .footer-links a:hover {
+      text-decoration: underline;
+  }
+  
+  .social-icons a img {
+      height: 30px;
+      width: 30px;
+      margin-right: 10px;
+  }
+  
+  .footer-container {
+      text-align: center;
+      padding-top: 10px;
+      border-top: 1px solid #555;
+      margin-top: 20px;
+  }
+  
+  .contact-us h2,
+  .follow-us h2 {
+      color: #000;
+      margin-bottom: 10px; 
+  }
+  
+  .contact-us p,
+  .follow-us p {
+      color: #000; 
+  }
+  
+  .contact-us b,
+  .follow-us b {
+      font-weight: normal; 
+  }
+  
+  .contact-us,
+  .follow-us {
+      margin-bottom: 20px;
+  }
+  
+  .footer-logo,
+  .footer-links,
+  .contact-us,
+  .follow-us {
+      margin-bottom: 10px;
+  }
+  
+  .copyright {
+      text-align: center;
+      margin-top: 20px;
+      color: #000; 
+  }
+</style>
+  
+<footer>
+    <div class="footer-content">
+        <div class="footer-section footer-left">
+            <div class="footer-logo">
+                <img src="{{ url_for('static', filename='images/website_logo.png') }}" alt="WEBSITE LOGO">
+            </div>
+        </div>
+        <div class="footer-section footer-center">
+            <div class="footer-links">
+                <h2>Quick Links</h2>
+                <a href="http://127.0.0.1:5000/">Home</a>
+                <a href="{{ url_for('aboutus') }}">About Us</a>
+                <a href="{{ url_for('support') }}">Support</a>
+                <a href="{{ url_for('terms') }}">Terms and Privacy Policy</a>
+                <a href="{{ url_for('sorting_page') }}">Sorting Visualizer</a>
+                <a href="{{ url_for('searching_page') }}">Searching Visualizer</a>
+            </div>
+        </div>
+        <div class="footer-section footer-right">
+            <div class="contact-us">
+                <h2>Contact Us</h2>
+                <p>Address: 3, Institutional Area, Sector-5, Rohini (Near Rithala Metro Station), Delhi-110085</p>
+                <p>Phone Number: (999)-089-504</p>
+                <p>Email: contactthessh@gmail.com</p>
+                <p>Hours: Available 24/7</p>
+            </div>
+            <div class="follow-us">
+                <h2>Follow Us</h2>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/"><img src="{{ url_for('static', filename='images/fb_logo.png') }}" alt="Facebook" /></a>
+                    <a href="https://twitter.com/?lang=en"><img src="{{ url_for('static', filename='images/x_logo.png') }}" alt="X aka Twitter" /></a>
+                    <a href="https://www.youtube.com/"><img src="{{ url_for('static', filename='images/yt_logo.png') }}" alt="YouTube" /></a>
+                    <a href="https://www.instagram.com/"><img src="{{ url_for('static', filename='images/insta_logo.png') }}" alt="Instagram" /></a>
+                    <a href="https://in.linkedin.com/"><img src="{{ url_for('static', filename='images/linkedin_logo.png') }}" alt="LinkedIn" /></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-container">
+        <p>&copy; 2024 SSH (Sort and Search Hub). All rights reserved.</p>
+    </div>
+</footer>
+  

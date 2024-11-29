@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<div class="container">
+    <h2>Welcome to SSH (Sort and Search Hub)</h2>
+    <p>
+        SSH is an interactive platform designed to help you understand and visualize various sorting and searching algorithms.
+        Whether you're a student trying to grasp algorithmic concepts or a professional looking to refresh your knowledge,
+        SSH provides an intuitive interface to explore and analyze the inner workings of these fundamental algorithms.
+    </p>
+    <div class="features">
+        <div class="feature">
+            <h3>Sorting Visualizer</h3>
+            <p>
+                Visualize different sorting algorithms in action. See how Bubble Sort, Quick Sort, Merge Sort, and others operate on your data.
+                Customize the dataset and control the visualization speed to enhance your learning experience.
+            </p>
+            <a href="{{ url_for('sorting_page') }}" class="button">Explore Sorting Visualizer</a>
+        </div>
+        <div class="feature">
+            <h3>Searching Visualizer</h3>
+            <p>
+                Understand how searching algorithms like Binary Search and Linear Search traverse data structures to find your target element.
+                Watch step-by-step animations and compare the efficiency of each method.
+            </p>
+            <a href="{{ url_for('searching_page') }}" class="button">Explore Searching Visualizer</a>
+        </div>
+    </div>
+    <div class="learn-algorithms">
+        <h2>Learn About Different Sorting and Searching Algorithms</h2>
+        <div class="algorithm-images">
+            <div class="algorithm">
+                <a href="{{ url_for('bubblesort') }}">
+                    <img src="{{ url_for('static', filename='images/bubble_sort.png') }}" alt="Bubble Sort">
+                    <p>Bubble Sort</p>
+                </a>
+            </div>
+            <div class="algorithm">
+                <a href="{{ url_for('selectionsort') }}">
+                    <img src="{{ url_for('static', filename='images/selection_sort.png') }}" alt="Selection Sort">
+                    <p>Selection Sort</p>
+                </a>
+            </div>
+            <div class="algorithm">
+                <a href="{{ url_for('insertionsort') }}">
+                    <img src="{{ url_for('static', filename='images/insertion_sort.png') }}" alt="Insertion Sort">
+                    <p>Insertion Sort</p>
+                </a>
+            </div>
+            <div class="algorithm">
+                <a href="{{ url_for('quicksort') }}">
+                    <img src="{{ url_for('static', filename='images/quick_sort.png') }}" alt="Quick Sort">
+                    <p>Quick Sort</p>
+                </a>
+            </div>
+            <div class="algorithm">
+                <a href="{{ url_for('mergesort') }}">
+                    <img src="{{ url_for('static', filename='images/merge_sort.png') }}" alt="Merge Sort">
+                    <p>Merge Sort</p>
+                </a>
+            </div>
+        </div>
+        <div class="algorithm-images">
+            <div class="algorithm">
+                <a href="{{ url_for('heapsort') }}">
+                    <img src="{{ url_for('static', filename='images/heap_sort.png') }}" alt="Heap Sort">
+                    <p>Heap Sort</p>
+                </a>
+            </div>
+            <div class="algorithm">
+                <a href="{{ url_for('timsort') }}">
+                    <img src="{{ url_for('static', filename='images/tim_sort.png') }}" alt="Tim Sort">
+                    <p>Tim Sort</p>
+                </a>
+            </div>
+            <div class="algorithm">
+                <a href="{{ url_for('shellsort') }}">
+                    <img src="{{ url_for('static', filename='images/shell_sort.png') }}" alt="Shell Sort">
+                    <p>Shell Sort</p>
+                </a>
+            </div>
+            <div class="algorithm">
+                <a href="{{ url_for('binarysearch') }}">
+                    <img src="{{ url_for('static', filename='images/binary_search.png') }}" alt="Binary Search">
+                    <p>Binary Search</p>
+                </a>
+            </div>
+            <div class="algorithm">
+                <a href="{{ url_for('linearsearch') }}">
+                    <img src="{{ url_for('static', filename='images/linear_search.png') }}" alt="Linear Search">
+                    <p>Linear Search</p>
+                </a>
+            </div>
+        </div>
+    </div>
+    <h2>Discover the Sort and Search Hub (SSH)</h2>
+    <div class="video-container">
+        <video width="100%" controls>
+            <source src="{{ url_for('static', filename='videos/Discover.mp4') }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,179 @@
+{% extends "base.html" %}
+{% block title %}Heap Sort{% endblock %}
+{% block content %}
+<div class="container">
+    <h1>Heap Sort</h1>
+    
+    <div class="mini-container">
+        <h3>Main Logic</h3>
+        <p>
+            Heap Sort is a comparison-based sorting algorithm that utilizes the heap data structure to sort elements. It works by first 
+            converting the input array into a max heap, which is a complete binary tree where the value of each node is greater than 
+            or equal to the values of its children. Once the max heap is built, the algorithm repeatedly removes the largest element 
+            (the root of the heap) and places it at the end of the array, then restructures the heap. This process is continued 
+            until all elements are removed from the heap, resulting in a sorted array.
+        </p>
+        <p>
+            The algorithm's time complexity is O(n log n) for both average and worst-case scenarios, making it efficient for large 
+            datasets. The heap is built in O(n) time, and each extraction takes O(log n) time.
+        </p>
+    </div>
+
+    <div class="code-container">
+        <h2>Heap Sort Example Code</h2>
+        <pre id="algorithmCode">
+def heapify(arr, n, i):
+    largest = i
+    left = 2 * i + 1
+    right = 2 * i + 2
+
+    if left < n and arr[i] < arr[left]:
+        largest = left
+
+    if right < n and arr[largest] < arr[right]:
+        largest = right
+
+    if largest != i:
+        arr[i], arr[largest] = arr[largest], arr[i]
+        heapify(arr, n, largest)
+
+def heap_sort(arr):
+    n = len(arr)
+
+    for i in range(n // 2 - 1, -1, -1):
+        heapify(arr, n, i)
+
+    for i in range(n - 1, 0, -1):
+        arr[i], arr[0] = arr[0], arr[i]
+        heapify(arr, i, 0)
+
+    return arr
+        </pre>
+    </div>
+
+    <div class="mini-container">
+        <h3>Depends on Structure or Content?</h3>
+        <p>
+            Heap Sort depends on both the structure and content of the data being sorted. The initial arrangement of the elements 
+            affects the efficiency of heap creation and subsequent sorting. For example, if the data is nearly sorted, the 
+            heapification process may be quicker. The actual values in the data also determine the final sorted order, influencing 
+            the algorithm's performance based on their distribution and relationship.
+        </p>
+    </div>    
+
+    <div class="mini-container">
+        <h3>In-Place?</h3>
+        <p>
+            Yes, Heap Sort is an in-place sorting algorithm. It requires only a constant amount of additional space, as it sorts 
+            the input array by rearranging its elements without needing to create additional arrays or lists. This property makes 
+            it suitable for memory-constrained environments.
+        </p>
+    </div>
+
+    <div class="mini-container">
+        <h3>Comparison/Counting Sort Algorithm?</h3>
+        <p>
+            Heap Sort is a comparison-based algorithm, as it sorts elements by comparing their values. Unlike counting sort, which 
+            is a non-comparison-based sorting algorithm that uses counting to determine the position of each element, Heap Sort 
+            operates by repeatedly comparing and swapping elements based on their values. This method is more versatile but generally 
+            less efficient than counting sort for datasets with a limited range of integer values.
+        </p>
+    </div>
+    
+    <div class="mini-container">
+        <h3>Algorithmic Approach</h3>
+        <p>
+            Heap Sort follows a strategy called "Divide and Conquer." The algorithm divides the array into two parts: the heap and 
+            the sorted portion. It first builds a max heap from the input array, ensuring that the largest elements are at the root. 
+            Then, it extracts the root element (the maximum) and places it at the end of the array. The heap is then restructured, 
+            maintaining the heap property, and the process repeats until all elements are sorted. This approach effectively manages 
+            the problem size by reducing the heap with each extraction.
+        </p>
+    </div>
+
+    <div class="mini-container">
+        <h3>Time Complexity</h3>
+        <p>
+            The time complexity of Heap Sort is O(n log n) for both average and worst cases. This is due to the need to build the 
+            heap in O(n) time and to perform log n operations for each of the n elements in the array during the sorting process.
+        </p>
+    </div>
+    
+    <div class="mini-container">
+        <h3>Space Complexity</h3>
+        <p>
+            The space complexity of Heap Sort is O(1), as it only requires a constant amount of additional memory space. This makes 
+            Heap Sort very memory efficient, suitable for environments where memory usage is a concern.
+        </p>
+    </div>
+    
+    <div class="mini-container">
+        <h3>Stability</h3>
+        <p>
+            Heap Sort is not a stable sorting algorithm. The relative order of equal elements may not be preserved, as the algorithm 
+            swaps elements based solely on their values. This characteristic is important to consider in scenarios where stability is 
+            required.
+        </p>
+    </div>
+
+    <div class="mini-container">
+        <h3>Summary Table</h3>
+        <div class="summary-table-container">
+            <table class="summary-table">
+                <tr>
+                    <th>Property</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Algorithm Type</td>
+                    <td>Internal</td>
+                </tr>
+                <tr>
+                    <td>In-Place?</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>Time Complexity (Best Case)</td>
+                    <td>O(n log n)</td>
+                </tr>
+                <tr>
+                    <td>Time Complexity (Average Case)</td>
+                    <td>O(n log n)</td>
+                </tr>
+                <tr>
+                    <td>Time Complexity (Worst Case)</td>
+                    <td>O(n log n)</td>
+                </tr>
+                <tr>
+                    <td>Space Complexity</td>
+                    <td>O(1)</td>
+                </tr>
+                <tr>
+                    <td>Stability</td>
+                    <td>Unstable</td>
+                </tr>
+                <tr>
+                    <td>Depends on Structure or Content?</td>
+                    <td>Depends on both the Structure and Content</td>
+                </tr>
+                <tr>
+                    <td>Comparison/Counting Sort Algorithm?</td>
+                    <td>Comparison-Based</td>
+                </tr>
+                <tr>
+                    <td>Algorithmic Approach</td>
+                    <td>Divide and Conquer</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    
+    <div class="mini-container">
+        <h3>Sorting Visualizer</h3>
+        <p>
+            Visualize this sorting algorithm and different other sorting algorithms in action. See this sorting algorithm others operate on your data.
+            Customize the data-values and control the visualization speed to enhance your learning experience.
+        </p>
+        <a href="{{ url_for('sorting_page') }}" class="button">Explore Sorting Visualizer</a>
+    </div>     
+{% endblock %}

@@ -1,0 +1,26 @@
+<header>
+    <div class="header-container">
+        <div class="logo">
+            <img src="{{ url_for('static', filename='images/website_logo.png') }}" alt="Website Logo" class="logo-image">
+        </div>
+        <h1>SSH (Sort and Search Hub)</h1>
+        <nav>
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('sorting_page') }}">Sorting Visualizer</a>
+            <a href="{{ url_for('searching_page') }}">Searching Visualizer</a>
+            {% if current_user.is_authenticated %}
+                <a href="{{ url_for('feedback') }}">Feedback</a>
+                <div class="profile-section">
+                    <a href="{{ url_for('profile') }}">
+                        <img src="{{ url_for('static', filename='images/my_profile.png') }}" alt="My Profile" class="profile-image">
+                        My Profile
+                    </a>
+                </div>
+                <a href="{{ url_for('logout') }}">Logout</a>
+            {% else %}
+                <a href="{{ url_for('login') }}">Login</a>
+                <a href="{{ url_for('register') }}">Register</a>
+            {% endif %}
+        </nav>
+    </div>
+</header>

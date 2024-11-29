@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+{% block title %}Insertion Sort{% endblock %}
+{% block content %}
+<div class="container">
+    <h1>Insertion Sort</h1>
+    
+    <div class="mini-container">
+        <h3>Main Logic</h3>
+        <p>
+            Insertion Sort is a simple comparison-based algorithm that builds the final sorted array one element at a time. 
+            It works similarly to how you might sort playing cards in your hands. The algorithm iterates through the list and 
+            picks each element, inserting it into its correct position in the sorted part of the list.
+        </p>
+    </div>
+
+    <div class="code-container">
+        <h2>Insertion Sort Example Code</h2>
+        <pre id="algorithmCode">
+def insertion_sort(arr):
+    for i in range(1, len(arr)):
+        key = arr[i]
+        j = i - 1
+        while j >= 0 and key < arr[j]:
+            arr[j + 1] = arr[j]
+            j -= 1
+        arr[j + 1] = key
+    return arr
+        </pre>
+    </div>
+    
+    <div class="mini-container">
+        <h3>Depends on Structure or Content?</h3>
+        <p>
+            Insertion Sort depends on both the structure and content of the input data. If the data is partially sorted, 
+            the algorithm can perform much better than its worst-case time complexity of O(n²). The content of the elements, 
+            such as their values, directly influences how many comparisons and shifts are required.
+        </p>
+    </div>    
+    
+    <div class="mini-container">
+        <h3>In-Place?</h3>
+        <p>
+            Yes, Insertion Sort is an in-place algorithm. It requires a constant amount of additional space as it only uses a few 
+            variables for index tracking, making it efficient in terms of memory usage.
+        </p>
+    </div>
+
+    <div class="mini-container">
+        <h3>Comparison/Counting Sort Algorithm?</h3>
+        <p>
+            Insertion Sort is a comparison-based sorting algorithm that compares elements to determine their order. 
+            Unlike counting sort, which relies on counting the frequency of elements, Insertion Sort organizes the elements based 
+            on their comparisons with adjacent values.
+        </p>
+    </div>
+    
+    <div class="mini-container">
+        <h3>Algorithmic Approach</h3>
+        <p>
+            Insertion Sort follows a "Subtract and Conquer" strategy. It reduces the unsorted portion of the array by one 
+            with each insertion, sorting the elements gradually. This intuitive approach allows for efficient sorting of small 
+            datasets or datasets that are already partially sorted.
+        </p>
+    </div>
+
+    <div class="mini-container">
+        <h3>Time Complexity</h3>
+        <p>
+            The time complexity of Insertion Sort is O(n²) in the average and worst cases. The best-case time complexity is O(n) 
+            when the array is already sorted, as only a single pass is required.
+        </p>
+    </div>
+    
+    <div class="mini-container">
+        <h3>Space Complexity</h3>
+        <p>
+            The space complexity of Insertion Sort is O(1) because it sorts the elements in place without requiring any extra 
+            storage.
+        </p>
+    </div>
+    
+    <div class="mini-container">
+        <h3>Stability</h3>
+        <p>
+            Insertion Sort is a stable sorting algorithm, which means that it preserves the relative order of records with equal keys. 
+            This stability is essential in cases where the order of elements is significant.
+        </p>
+    </div>
+
+    <div class="mini-container">
+        <h3>Summary Table</h3>
+        <div class="summary-table-container">
+            <table class="summary-table">
+                <tr>
+                    <th>Property</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Algorithm Type</td>
+                    <td>Internal</td>
+                </tr>
+                <tr>
+                    <td>In-Place?</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>Time Complexity (Best Case)</td>
+                    <td>O(n)</td>
+                </tr>
+                <tr>
+                    <td>Time Complexity (Average Case)</td>
+                    <td>O(n²)</td>
+                </tr>
+                <tr>
+                    <td>Time Complexity (Worst Case)</td>
+                    <td>O(n²)</td>
+                </tr>
+                <tr>
+                    <td>Space Complexity</td>
+                    <td>O(1)</td>
+                </tr>
+                <tr>
+                    <td>Stability</td>
+                    <td>Stable</td>
+                </tr>
+                <tr>
+                    <td>Depends on Structure or Content?</td>
+                    <td>Depends on both Structure and Content</td>
+                </tr>
+                <tr>
+                    <td>Comparison/Counting Sort Algorithm?</td>
+                    <td>Comparison-Based</td>
+                </tr>
+                <tr>
+                    <td>Algorithmic Approach</td>
+                    <td>Subtract and Conquer</td>
+                </tr>
+            </table>
+        </div>
+    </div>   
+    
+    <div class="mini-container">
+        <h3>Sorting Visualizer</h3>
+        <p>
+            Visualize this sorting algorithm and different other sorting algorithms in action. See this sorting algorithm others operate on your data.
+            Customize the data-values and control the visualization speed to enhance your learning experience.
+        </p>
+        <a href="{{ url_for('sorting_page') }}" class="button">Explore Sorting Visualizer</a>
+    </div>     
+{% endblock %}

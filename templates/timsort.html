@@ -1,0 +1,211 @@
+{% extends "base.html" %}
+{% block title %}Tim Sort{% endblock %}
+{% block content %}
+<div class="container">
+    <h1>Tim Sort</h1>
+    
+    <div class="mini-container">
+        <h3>Main Logic</h3>
+        <p>
+            Tim Sort is a hybrid sorting algorithm derived from Merge Sort and Insertion Sort. It is designed to perform well on 
+            many kinds of real-world data. The algorithm divides the input array into smaller segments, called runs, which are 
+            sorted using Insertion Sort. Once these runs are sorted, they are merged together using Merge Sort. The algorithm 
+            takes advantage of existing order in the input array to optimize performance, making it particularly effective 
+            for partially sorted arrays.
+        </p>
+        <p>
+            Tim Sort has a time complexity of O(n log n) in the worst case, O(n) in the best case (when the data is already 
+            sorted), and O(n log n) in the average case. The algorithm is adaptive, meaning it can take advantage of the 
+            existing order in the data, resulting in improved performance for partially sorted arrays.
+        </p>
+    </div>
+
+    <div class="code-container">
+        <h2>Tim Sort Example Code</h2>
+        <pre id="algorithmCode">
+        def tim_sort(arr):
+            n = len(arr)
+            min_run = 32
+        
+            for i in range(0, n, min_run):
+                insertion_sort(arr, i, min((i + min_run - 1), n-1))
+        
+            size = min_run
+            while size < n:
+                for start in range(0, n, size * 2):
+                    midpoint = start + size - 1
+                    end = min((start + size * 2 - 1), (n-1))
+                    merge(arr, start, midpoint, end)
+                size *= 2
+            return arr
+        
+        def insertion_sort(arr, left, right):
+            for i in range(left + 1, right + 1):
+                key = arr[i]
+                j = i - 1
+                while j >= left and arr[j] > key:
+                    arr[j + 1] = arr[j]
+                    j -= 1
+                arr[j + 1] = key
+        
+        def merge(arr, l, m, r):
+            len1, len2 = m - l + 1, r - m
+            left, right = [], []
+        
+            for i in range(0, len1):
+                left.append(arr[l + i])
+            for i in range(0, len2):
+                right.append(arr[m + 1 + i])
+        
+            i = j = 0
+            k = l
+        
+            while i < len1 and j < len2:
+                if left[i] <= right[j]:
+                    arr[k] = left[i]
+                    i += 1
+                else:
+                    arr[k] = right[j]
+                    j += 1
+                k += 1
+        
+            while i < len1:
+                arr[k] = left[i]
+                i += 1
+                k += 1
+        
+            while j < len2:
+                arr[k] = right[j]
+                j += 1
+                k += 1
+        </pre>
+    </div>
+
+    <div class="mini-container">
+        <h3>Depends on Structure or Content?</h3>
+        <p>
+            Tim Sort depends on both the structure and content of the data being sorted. The algorithm's efficiency is influenced 
+            by the initial order of the data. For instance, if the data contains long runs of ordered elements, Tim Sort can perform 
+            significantly better, approaching O(n) time complexity. Conversely, if the data is entirely random, the algorithm will 
+            exhibit its worst-case O(n log n) behavior. Thus, the structure of the input affects how many runs are formed and how 
+            efficiently they can be merged.
+        </p>
+    </div>    
+
+    <div class="mini-container">
+        <h3>In-Place?</h3>
+        <p>
+            No, Tim Sort is not an in-place sorting algorithm. It requires additional memory for temporary arrays used during 
+            merging. The space complexity is O(n) due to the auxiliary space needed for the left and right copies of the arrays 
+            during the merge process.
+        </p>
+    </div>
+
+    <div class="mini-container">
+        <h3>Comparison/Counting Sort Algorithm?</h3>
+        <p>
+            Tim Sort is a comparison-based algorithm, meaning it sorts elements by comparing their values. It combines features 
+            of both Merge Sort and Insertion Sort, leveraging comparisons for efficient sorting. Unlike counting sort, which 
+            does not use comparisons and relies on counting occurrences, Tim Sort is more versatile, adapting to various data 
+            distributions and orders, making it suitable for a wider range of applications.
+        </p>
+    </div>
+    
+    <div class="mini-container">
+        <h3>Algorithmic Approach</h3>
+        <p>
+            Tim Sort follows a hybrid approach, combining both Merge Sort and Insertion Sort. It begins by dividing the input 
+            array into smaller segments called runs and sorts each run using Insertion Sort, which is efficient for small datasets. 
+            After sorting the runs, it merges them together using a merge process similar to Merge Sort. This hybrid approach 
+            allows Tim Sort to capitalize on existing order in the input data, making it particularly effective for real-world datasets 
+            where partial order is common.
+        </p>
+    </div>
+
+    <div class="mini-container">
+        <h3>Time Complexity</h3>
+        <p>
+            The time complexity of Tim Sort is O(n log n) in the worst case. However, it can achieve O(n) time complexity in the best case 
+            when the data is already sorted. The average time complexity also remains O(n log n), making Tim Sort efficient for various 
+            types of datasets, particularly those that are partially sorted.
+        </p>
+    </div>
+    
+    <div class="mini-container">
+        <h3>Space Complexity</h3>
+        <p>
+            The space complexity of Tim Sort is O(n) due to the auxiliary space needed for the temporary arrays used in the merging 
+            process. This space requirement makes it less memory efficient than some in-place algorithms, but it is justified by 
+            its performance advantages with real-world data.
+        </p>
+    </div>
+    
+    <div class="mini-container">
+        <h3>Stability</h3>
+        <p>
+            Tim Sort is a stable sorting algorithm, meaning that it preserves the relative order of records with equal keys. This 
+            stability is crucial in scenarios where the original order of elements matters, such as sorting objects based on multiple fields.
+        </p>
+    </div>
+
+    <div class="mini-container">
+        <h3>Summary Table</h3>
+        <div class="summary-table-container">
+            <table class="summary-table">
+                <tr>
+                    <th>Property</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Algorithm Type</td>
+                    <td>Internal</td>
+                </tr>
+                <tr>
+                    <td>In-Place?</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>Time Complexity (Best Case)</td>
+                    <td>O(n)</td>
+                </tr>
+                <tr>
+                    <td>Time Complexity (Average Case)</td>
+                    <td>O(n log n)</td>
+                </tr>
+                <tr>
+                    <td>Time Complexity (Worst Case)</td>
+                    <td>O(n log n)</td>
+                </tr>
+                <tr>
+                    <td>Space Complexity</td>
+                    <td>O(n)</td>
+                </tr>
+                <tr>
+                    <td>Stability</td>
+                    <td>Stable</td>
+                </tr>
+                <tr>
+                    <td>Depends on Structure or Content?</td>
+                    <td>Depends on both the Structure and Content</td>
+                </tr>
+                <tr>
+                    <td>Comparison/Counting Sort Algorithm?</td>
+                    <td>Comparison-Based</td>
+                </tr>
+                <tr>
+                    <td>Algorithmic Approach</td>
+                    <td>Hybrid of Merge Sort and Insertion Sort</td>
+                </tr>
+            </table>
+        </div>
+    </div>    
+    
+    <div class="mini-container">
+        <h3>Sorting Visualizer</h3>
+        <p>
+            Visualize this sorting algorithm and different other sorting algorithms in action. See this sorting algorithm others operate on your data.
+            Customize the data-values and control the visualization speed to enhance your learning experience.
+        </p>
+        <a href="{{ url_for('sorting_page') }}" class="button">Explore Sorting Visualizer</a>
+    </div>     
+{% endblock %}

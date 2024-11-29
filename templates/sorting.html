@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Sorting Visualizer{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="controls">
+            <button onclick="generateArray()">Generate Random Array</button>
+            {% if current_user.is_authenticated %}
+                <button onclick="takeUserInput()">Take User Input</button>
+                <input type="text" id="userInput" placeholder="Enter comma separated no.">
+            {% else %}
+                <button onclick="alert('Please log in to use custom array input.')">Take User Input</button>
+                <input type="text" id="userInput" placeholder="Login to enter custom array" disabled>
+            {% endif %}
+            <label for="sortSelect">Select Appropriate Sorting Algorithm:</label>
+            <select id="sortSelect">
+                <option value="bubble">Bubble Sort</option>
+                <option value="selection">Selection Sort</option>
+                <option value="insertion">Insertion Sort</option>
+                <option value="quick">Quick Sort</option>
+                <option value="merge">Merge Sort</option>
+                <option value="heap">Heap Sort</option>
+                <option value="tim">Tim Sort</option>
+                <option value="shell">Shell Sort</option>
+            </select>
+            <label for="orderSelect">Sorting Order:</label>
+            <select id="orderSelect">
+                <option value="ascending">Ascending</option>
+                <option value="descending">Descending</option>
+            </select>
+            <label for="speedSelect">Speed:</label>
+            <select id="speedSelect">
+                <option value="fast">Fast</option>
+                <option value="medium">Medium</option>
+                <option value="slow">Slow</option>
+            </select>
+            <button onclick="startSort()">Start Sorting</button>
+        </div>
+        <div id="arrayContainer" class="array-container"></div>
+        <div id="codeContainer" class="code-container">
+            <h2>Algorithm Code</h2>
+            <pre id="algorithmCode" class="language-python">// Select a sorting algorithm to view its code here.</pre>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='sorting.js') }}"></script>
+    <script src="{{ url_for('static', filename='codeSortingSnippets.js') }}"></script>
+{% endblock %}

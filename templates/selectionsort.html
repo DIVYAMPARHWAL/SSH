@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+{% block title %}Selection Sort{% endblock %}
+{% block content %}
+<div class="container">
+    <h1>Selection Sort</h1>
+    
+    <div class="mini-container">
+        <h3>Main Logic</h3>
+        <p>
+            Selection Sort is a comparison-based sorting algorithm that works by dividing the input list into a sorted and an unsorted region. 
+            The algorithm iteratively selects the smallest (or largest, depending on sorting order) element from the unsorted region and swaps it 
+            with the leftmost unsorted element, moving the boundary between the sorted and unsorted regions one element to the right. 
+            This continues until the entire list is sorted.
+        </p>
+    </div>
+
+    <div class="code-container">
+        <h2>Selection Sort Example Code</h2>
+        <pre id="algorithmCode">
+def selection_sort(list):
+    n = len(list)
+    for i in range(n):
+        for j in range(i+1, n):
+            if list[j] < list[i]:
+                temp=list[i]
+                list[i]=list[j]
+                list[j]=temp
+    return list
+        </pre>
+    </div>
+    
+    <div class="mini-container">
+        <h3>Depends on Structure or Content?</h3>
+        <p>
+            Selection Sort depends on the structure of the data being sorted. The algorithm always makes the same number of comparisons, 
+            regardless of the initial arrangement of elements. However, the actual values (content) do not impact the sorting process, 
+            as the algorithm systematically selects the minimum element.
+        </p>
+    </div>    
+    
+    <div class="mini-container">
+        <h3>In-Place?</h3>
+        <p>
+            Yes, Selection Sort is an in-place sorting algorithm. It requires a constant amount of additional memory space for its operation 
+            since it only uses a few variables to keep track of the current index and the minimum element index.
+        </p>
+    </div>
+
+    <div class="mini-container">
+        <h3>Comparison/Counting Sort Algorithm?</h3>
+        <p>
+            Selection Sort is a comparison-based algorithm that determines the order of elements by comparing their values. Unlike counting sort, 
+            which is non-comparison-based, Selection Sort performs a fixed number of comparisons regardless of the input data's distribution.
+        </p>
+    </div>
+    
+    <div class="mini-container">
+        <h3>Algorithmic Approach</h3>
+        <p>
+            Selection Sort follows a "Subtract and Conquer" strategy by reducing the unsorted portion of the array with each selection of the 
+            minimum element. This approach simplifies the sorting process, but it is not efficient for large datasets due to its O(n²) time complexity.
+        </p>
+    </div>
+
+    <div class="mini-container">
+        <h3>Time Complexity</h3>
+        <p>
+            The time complexity of Selection Sort is O(n²) for all cases (best, average, and worst). This is because the algorithm must always 
+            scan through the remaining unsorted elements to find the minimum.
+        </p>
+    </div>
+    
+    <div class="mini-container">
+        <h3>Space Complexity</h3>
+        <p>
+            The space complexity of Selection Sort is O(1), as it only requires a constant amount of additional memory space.
+        </p>
+    </div>
+    
+    <div class="mini-container">
+        <h3>Stability</h3>
+        <p>
+            Selection Sort is not a stable sorting algorithm. Equal elements may not retain their relative positions in the sorted output.
+        </p>
+    </div>
+
+    <div class="mini-container">
+        <h3>Summary Table</h3>
+        <div class="summary-table-container">
+            <table class="summary-table">
+                <tr>
+                    <th>Property</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Algorithm Type</td>
+                    <td>Internal</td>
+                </tr>
+                <tr>
+                    <td>In-Place?</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>Time Complexity (Best Case)</td>
+                    <td>O(n²)</td>
+                </tr>
+                <tr>
+                    <td>Time Complexity (Average Case)</td>
+                    <td>O(n²)</td>
+                </tr>
+                <tr>
+                    <td>Time Complexity (Worst Case)</td>
+                    <td>O(n²)</td>
+                </tr>
+                <tr>
+                    <td>Space Complexity</td>
+                    <td>O(1)</td>
+                </tr>
+                <tr>
+                    <td>Stability</td>
+                    <td>Not Stable</td>
+                </tr>
+                <tr>
+                    <td>Depends on Structure or Content?</td>
+                    <td>Depends on Structure</td>
+                </tr>
+                <tr>
+                    <td>Comparison/Counting Sort Algorithm?</td>
+                    <td>Comparison-Based</td>
+                </tr>
+                <tr>
+                    <td>Algorithmic Approach</td>
+                    <td>Subtract and Conquer</td>
+                </tr>
+            </table>
+        </div>
+    </div>   
+    
+    <div class="mini-container">
+        <h3>Sorting Visualizer</h3>
+        <p>
+            Visualize this sorting algorithm and different other sorting algorithms in action. See this sorting algorithm others operate on your data.
+            Customize the data-values and control the visualization speed to enhance your learning experience.
+        </p>
+        <a href="{{ url_for('sorting_page') }}" class="button">Explore Sorting Visualizer</a>
+    </div>     
+{% endblock %}

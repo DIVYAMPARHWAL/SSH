@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Feedback{% endblock %}
+{% block content %}
+<div class="container">
+    <h2>Feedback</h2>
+    <form method="POST" action="{{ url_for('feedback') }}">
+        <div class="form-group">
+            <label for="content">Your Feedback:</label>
+            <textarea id="content" name="content" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="button">Submit Feedback</button>
+    </form>
+    <h3>Your Feedbacks:</h3>
+    {% if feedbacks %}
+        <ul class="feedback-list">
+            {% for fb in feedbacks %}
+                <li>{{ fb.content }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>You haven't submitted any feedback yet.</p>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+{% block title %}Binary Search{% endblock %}
+{% block content %}
+<div class="container">
+    <h1>Binary Search</h1>
+    
+    <div class="mini-container">
+        <h3>Main Logic</h3>
+        <p>
+            Binary Search is an efficient algorithm for finding a target value within a sorted array. It works by repeatedly dividing 
+            the search interval in half. The algorithm compares the target value to the middle element of the array; if they are equal, 
+            the search is complete. If the target value is less than the middle element, the search continues in the left half of 
+            the array; otherwise, it continues in the right half. This process repeats until the target value is found or the 
+            search interval is empty. 
+        </p>
+    </div>
+
+    <div class="code-container">
+        <h2>Binary Search Example Code</h2>
+        <pre id="algorithmCode">
+def binary_search(arr, target):
+    left, right = 0, len(arr) - 1
+
+    while left <= right:
+        mid = left + (right - left) // 2
+
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+
+    return -1
+        </pre>
+    </div>
+
+    <div class="mini-container">
+        <h3>Algorithm Type</h3>
+        <p>
+            Binary Search is categorized as an internal search algorithm as it operates on data stored in memory (i.e., arrays).
+        </p>
+    </div>  
+
+    <div class="mini-container">
+        <h3>Time Complexity</h3>
+        <p>
+            The time complexity of Binary Search is O(log n), where n is the number of elements in the array. This logarithmic 
+            performance makes it highly efficient, especially when compared to linear search methods, which have a time complexity 
+            of O(n). The logarithmic nature arises from the halving of the search space with each iteration.
+        </p>
+    </div>
+    
+    <div class="mini-container">
+        <h3>Space Complexity</h3>
+        <p>
+            The space complexity of Binary Search is O(1) for the iterative version, as it only requires a few variables for 
+            tracking the left, right, and middle indices. The recursive version, however, has a space complexity of O(log n) 
+            due to the recursive call stack. 
+        </p>
+    </div>
+
+    <div class="mini-container">
+        <h3>Comparison/Counting Search Algorithm?</h3>
+        <p>
+            Binary Search is a comparison-based algorithm, as it determines the position of the target value by comparing it 
+            with the elements in the array. This approach contrasts with counting search algorithms, which do not require 
+            comparisons and instead use counts to determine the position of each element. Binary Search is generally more 
+            efficient for large, sorted datasets due to its O(log n) time complexity.
+        </p>
+    </div>
+    
+    <div class="mini-container">
+        <h3>Algorithmic Approach</h3>
+        <p>
+            Binary Search follows a "Divide and Conquer" approach. It repeatedly divides the search interval in half, 
+            effectively reducing the size of the search space with each iteration. This method allows for logarithmic 
+            search times, making it significantly faster than linear search methods for large datasets.
+        </p>
+    </div>
+    
+    <div class="mini-container">
+        <h3>Depends on Structure or Content?</h3>
+        <p>
+            Binary Search depends on the structure of the data being searched. Specifically, the data must be sorted prior 
+            to performing a binary search. The efficiency of the algorithm relies on the sorted arrangement of elements; 
+            if the array is not sorted, the algorithm cannot guarantee the correct position of the target value. The 
+            content of the data also influences the search results but does not affect the execution of the algorithm itself.
+        </p>
+    </div>    
+
+    <div class="mini-container">
+        <h3>Summary Table</h3>
+        <div class="summary-table-container">
+            <table class="summary-table">
+                <tr>
+                    <th>Property</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Algorithm Type</td>
+                    <td>Internal</td>
+                </tr>
+                <tr>
+                    <td>Time Complexity (Best Case)</td>
+                    <td>O(1)</td>
+                </tr>
+                <tr>
+                    <td>Time Complexity (Average Case)</td>
+                    <td>O(log n)</td>
+                </tr>
+                <tr>
+                    <td>Time Complexity (Worst Case)</td>
+                    <td>O(log n)</td>
+                </tr>
+                <tr>
+                    <td>Space Complexity</td>
+                    <td>O(1)</td>
+                </tr>
+                <tr>
+                    <td>Depends on Structure or Content?</td>
+                    <td>Depends on Structure</td>
+                </tr>
+                <tr>
+                    <td>Comparison/Counting Search Algorithm?</td>
+                    <td>Comparison-Based</td>
+                </tr>
+                <tr>
+                    <td>Algorithmic Approach</td>
+                    <td>Divide and Conquer</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="mini-container">
+        <h3>Searching Visualizer</h3>
+        <p>
+            Understand how this searching algorithms traverse data structures to find your target element.
+            Watch step-by-step animations and compare the efficiency of each method.
+        </p>
+        <a href="{{ url_for('searching_page') }}" class="button">Explore Searching Visualizer</a>
+    </div>      
+{% endblock %}

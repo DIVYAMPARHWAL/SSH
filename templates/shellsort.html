@@ -1,0 +1,171 @@
+{% extends "base.html" %}
+{% block title %}Shell Sort{% endblock %}
+{% block content %}
+<div class="container">
+    <h1>Shell Sort</h1>
+    
+    <div class="mini-container">
+        <h3>Main Logic</h3>
+        <p>
+            Shell Sort is an in-place comparison-based sorting algorithm that generalizes insertion sort to allow the exchange 
+            of items that are far apart. The algorithm works by sorting elements at specific intervals (known as gaps) and 
+            progressively reducing the gap between the elements being compared. Initially, large gaps are used to move 
+            elements closer to their final positions, and as the algorithm progresses, the gaps are reduced until they reach 
+            a value of 1, at which point it becomes a standard insertion sort. This approach significantly reduces the total 
+            number of comparisons and movements, improving performance on larger lists.
+        </p>
+        <p>
+            Shell Sort has a time complexity that depends on the gap sequence used. The average and worst-case time complexities 
+            can vary from O(n log n) to O(n²), depending on the specific gap sequence employed. It is generally more efficient 
+            than a simple insertion sort for larger data sets due to its ability to move elements over larger distances initially.
+        </p>
+    </div>
+
+    <div class="code-container">
+        <h2>Shell Sort Example Code</h2>
+        <pre id="algorithmCode">
+def shell_sort(arr):
+    n = len(arr)
+    gap = n // 2
+
+    while gap > 0:
+        for i in range(gap, n):
+            temp = arr[i]
+            j = i
+            while j >= gap and arr[j - gap] > temp:
+                arr[j] = arr[j - gap]
+                j -= gap
+            arr[j] = temp
+        gap //= 2
+
+    return arr
+        </pre>
+    </div>
+
+    <div class="mini-container">
+        <h3>Depends on Structure or Content?</h3>
+        <p>
+            Shell Sort depends on both the structure and content of the data being sorted. The efficiency of the algorithm 
+            can be influenced by the initial ordering of the elements. If the data is partially sorted, Shell Sort can 
+            perform significantly better, resulting in fewer comparisons and movements. Conversely, if the data is randomly 
+            ordered, the performance will align more closely with the average-case time complexity. Additionally, the choice 
+            of gap sequence can affect the algorithm's performance characteristics.
+        </p>
+    </div>    
+
+    <div class="mini-container">
+        <h3>In-Place?</h3>
+        <p>
+            Yes, Shell Sort is an in-place sorting algorithm. It requires only a constant amount of additional memory space 
+            for its operations. The sorting is done by modifying the input array directly, which is an advantage for memory-constrained 
+            environments while not significantly impacting overall performance.
+        </p>
+    </div>
+
+    <div class="mini-container">
+        <h3>Comparison/Counting Sort Algorithm?</h3>
+        <p>
+            Shell Sort is a comparison-based algorithm, meaning it sorts elements by comparing their values. Unlike counting 
+            sort, which is a non-comparison-based sorting algorithm that uses counts to determine the position of each element, 
+            Shell Sort's approach involves making comparisons between elements at various intervals defined by the gap sequence. 
+            This makes it more versatile and applicable to a wider range of data types compared to counting sort.
+        </p>
+    </div>
+    
+    <div class="mini-container">
+        <h3>Algorithmic Approach</h3>
+        <p>
+            Shell Sort follows an approach that generalizes insertion sort by allowing the exchange of elements that are 
+            far apart. It begins by sorting elements with a large gap between them and progressively reduces the gap size until 
+            it reaches one. This approach helps in moving elements closer to their final sorted positions more efficiently than 
+            traditional insertion sort, which only compares adjacent elements.
+        </p>
+    </div>
+
+    <div class="mini-container">
+        <h3>Time Complexity</h3>
+        <p>
+            The time complexity of Shell Sort varies based on the gap sequence used. In the average case, it is O(n log n), 
+            while the worst-case can be O(n²) if a poor gap sequence is chosen. However, using better sequences, like the 
+            Hibbard or Sedgewick sequences, can significantly improve performance, allowing it to approach O(n^(3/2)) or O(n log² n).
+        </p>
+    </div>
+    
+    <div class="mini-container">
+        <h3>Space Complexity</h3>
+        <p>
+            The space complexity of Shell Sort is O(1) because it only requires a small amount of additional memory space for 
+            variables used in the sorting process. This makes Shell Sort suitable for situations where memory usage is a concern.
+        </p>
+    </div>
+    
+    <div class="mini-container">
+        <h3>Stability</h3>
+        <p>
+            Shell Sort is not a stable sorting algorithm. This means that it does not necessarily preserve the relative order 
+            of elements with equal keys. In scenarios where stability is crucial, such as when sorting complex objects based 
+            on multiple fields, alternative stable sorting algorithms should be considered.
+        </p>
+    </div>
+
+    <div class="mini-container">
+        <h3>Summary Table</h3>
+        <div class="summary-table-container">
+            <table class="summary-table">
+                <tr>
+                    <th>Property</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Algorithm Type</td>
+                    <td>Internal</td>
+                </tr>
+                <tr>
+                    <td>In-Place?</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>Time Complexity (Best Case)</td>
+                    <td>O(n log n)</td>
+                </tr>
+                <tr>
+                    <td>Time Complexity (Average Case)</td>
+                    <td>O(n log n)</td>
+                </tr>
+                <tr>
+                    <td>Time Complexity (Worst Case)</td>
+                    <td>O(n²)</td>
+                </tr>
+                <tr>
+                    <td>Space Complexity</td>
+                    <td>O(1)</td>
+                </tr>
+                <tr>
+                    <td>Stability</td>
+                    <td>Not Stable</td>
+                </tr>
+                <tr>
+                    <td>Depends on Structure or Content?</td>
+                    <td>Depends on both the Structure and Content</td>
+                </tr>
+                <tr>
+                    <td>Comparison/Counting Sort Algorithm?</td>
+                    <td>Comparison-Based</td>
+                </tr>
+                <tr>
+                    <td>Algorithmic Approach</td>
+                    <td>Generalized Insertion Sort</td>
+                </tr>
+            </table>
+        </div>
+    </div>    
+
+    <div class="mini-container">
+        <h3>Sorting Visualizer</h3>
+        <p>
+            Visualize this sorting algorithm and different other sorting algorithms in action. See this sorting algorithm others operate on your data.
+            Customize the data-values and control the visualization speed to enhance your learning experience.
+        </p>
+        <a href="{{ url_for('sorting_page') }}" class="button">Explore Sorting Visualizer</a>
+    </div>     
+{% endblock %}

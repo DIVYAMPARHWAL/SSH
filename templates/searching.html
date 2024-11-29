@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Searching Visualizer{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="controls">
+            <button onclick="generateArray()">Generate Random Array</button>
+            {% if current_user.is_authenticated %}
+                <button onclick="takeUserInput()">Take User Input</button>
+                <input type="text" id="userArrayInput" placeholder="Enter comma separated no.">
+            {% else %}
+                <button onclick="alert('Please log in to use custom array input.')">Take User Input</button>
+                <input type="text" id="userArrayInput" placeholder="Login to enter custom array" disabled>
+            {% endif %}
+            <label for="searchSelect">Select Searching Algorithm:</label>
+            <select id="searchSelect">
+                <option value="linear">Linear Search</option>
+                <option value="binary">Binary Search</option>
+            </select>
+            <label for="searchInput">Value to Search:</label>
+            <input type="text" id="searchInput" placeholder="Enter value to search">
+            <label for="speedSelect">Speed:</label>
+            <select id="speedSelect">
+                <option value="slow">Slow</option>
+                <option value="medium">Medium</option>
+                <option value="fast">Fast</option>
+            </select>
+            <button onclick="startSearch()">Start Searching</button>
+        </div>
+        <div id="arrayContainer" class="array-container"></div>
+        <div id="codeContainer" class="code-container">
+            <h2>Algorithm Code</h2>
+            <pre><code id="codeDisplay" class="language-javascript">// Algorithm code will appear here</code></pre>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='searching.js') }}"></script>
+{% endblock %}

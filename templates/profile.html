@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}Profile{% endblock %}
+{% block content %}
+<div class="container">
+    <h2>My Profile</h2>
+    <form method="POST" action="{{ url_for('profile') }}">
+        <div class="form-group">
+            <label for="firstname">First Name:</label>
+            <input type="text" id="firstname" name="firstname" value="{{ current_user.firstname }}" required>
+        </div>
+        <div class="form-group">
+            <label for="lastname">Last Name:</label>
+            <input type="text" id="lastname" name="lastname" value="{{ current_user.lastname }}" required>
+        </div>
+        <div class="form-group">
+            <label for="country">Country:</label>
+            <input type="text" id="country" name="country" value="{{ current_user.country }}" required>
+        </div>
+        <div class="form-group">
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" required>
+                <option value="">Select Gender</option>
+                <option value="Male" {% if current_user.gender == 'Male' %}selected{% endif %}>Male</option>
+                <option value="Female" {% if current_user.gender == 'Female' %}selected{% endif %}>Female</option>
+                <option value="Other" {% if current_user.gender == 'Other' %}selected{% endif %}>Other</option>
+                <option value="Prefer not to say" {% if current_user.gender == 'Prefer not to say' %}selected{% endif %}>Prefer not to say</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" value="{{ current_user.username }}" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" value="{{ current_user.email }}" required>
+        </div>
+        <hr>
+        <h3>Update Password</h3>
+        <div class="form-group">
+            <label for="old_password">Current Password:</label>
+            <input type="password" id="old_password" name="old_password">
+        </div>
+        <div class="form-group">
+            <label for="new_password">New Password:</label>
+            <input type="password" id="new_password" name="new_password">
+            <small>Password must be at least 12 characters long and include uppercase, lowercase, number, and special character.</small>
+        </div>
+        <div class="form-group">
+            <label for="confirm_new_password">Confirm New Password:</label>
+            <input type="password" id="confirm_new_password" name="confirm_new_password">
+        </div>
+        <button type="submit" class="button">Update Profile</button>
+    </form>
+</div>
+{% endblock %}

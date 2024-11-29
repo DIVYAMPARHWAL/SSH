@@ -1,0 +1,157 @@
+{% extends "base.html" %}
+{% block title %}Quick Sort{% endblock %}
+{% block content %}
+<div class="container">
+    <h1>Quick Sort</h1>
+    
+    <div class="mini-container">
+        <h3>Main Logic</h3>
+        <p>
+            Quick Sort is a highly efficient sorting algorithm that follows the divide and conquer strategy. It works by selecting a 'pivot' 
+            element from the array and partitioning the other elements into two sub-arrays according to whether they are less than or greater 
+            than the pivot. The sub-arrays are then sorted recursively.
+        </p>
+        <p>
+            The process of partitioning involves rearranging the array so that all elements less than the pivot are on its left and all elements 
+            greater than the pivot are on its right. This is repeated for each sub-array until the base case of single-element or empty arrays 
+            is reached, at which point the entire array is sorted.
+        </p>
+    </div>
+
+    <div class="code-container">
+        <h2>Quick Sort Example Code</h2>
+        <pre id="algorithmCode">
+def quick_sort(arr):
+    if len(arr) <= 1:
+        return arr
+    pivot = arr[len(arr) // 2]
+    left = [x for x in arr if x < pivot]
+    middle = [x for x in arr if x == pivot]
+    right = [x for x in arr if x > pivot]
+    return quick_sort(left) + middle + quick_sort(right)
+        </pre>
+    </div>
+    
+    <div class="mini-container">
+        <h3>Depends on Structure or Content?</h3>
+        <p>
+            Quick Sort depends on both the structure and content of the data being sorted. The choice of the pivot can significantly affect 
+            the performance of the algorithm. For example, if the pivot is chosen poorly (such as always picking the first or last element in 
+            a sorted array), the time complexity can degrade to O(n²). Conversely, with a good pivot selection strategy (like using the median), 
+            the average time complexity remains O(n log n).
+        </p>
+    </div>    
+    
+    <div class="mini-container">
+        <h3>In-Place?</h3>
+        <p>
+            Yes, Quick Sort is considered an in-place sorting algorithm because it requires a small, constant amount of additional storage space 
+            for its operation. The sorting is performed within the input array, making it efficient in terms of memory usage.
+        </p>
+    </div>
+
+    <div class="mini-container">
+        <h3>Comparison/Counting Sort Algorithm?</h3>
+        <p>
+            Quick Sort is a comparison-based sorting algorithm. It determines the order of elements by comparing them to the pivot during the 
+            partitioning process. This is in contrast to counting sort, which does not rely on comparisons but rather counts the occurrences of 
+            each value to determine their positions in the sorted array.
+        </p>
+    </div>
+    
+    <div class="mini-container">
+        <h3>Algorithmic Approach</h3>
+        <p>
+            Quick Sort follows the "Divide and Conquer" approach. It divides the array into smaller sub-arrays, sorts each sub-array independently, 
+            and combines the results. The main steps include selecting a pivot, partitioning the array, and recursively applying the same strategy 
+            to the resulting sub-arrays.
+        </p>
+    </div>
+
+    <div class="mini-container">
+        <h3>Time Complexity</h3>
+        <p>
+            The average and best-case time complexity of Quick Sort is O(n log n), which occurs when the pivot divides the array into two nearly 
+            equal halves. However, in the worst case, where the smallest or largest element is consistently chosen as the pivot, the time complexity 
+            can degrade to O(n²). The choice of pivot and the partitioning method greatly influence performance.
+        </p>
+    </div>
+    
+    <div class="mini-container">
+        <h3>Space Complexity</h3>
+        <p>
+            The space complexity of Quick Sort is O(log n) due to the stack space required for recursion. However, in cases where a large number of 
+            partitions occur, the space complexity could increase to O(n) in the worst case. This makes Quick Sort relatively space-efficient 
+            compared to other sorting algorithms that require additional data structures.
+        </p>
+    </div>
+    
+    <div class="mini-container">
+        <h3>Stability</h3>
+        <p>
+            Quick Sort is not a stable sorting algorithm. This means that the relative order of equal elements may not be preserved after sorting. 
+            In scenarios where stability is important, other algorithms like Merge Sort or Stable Quick Sort variations may be preferred.
+        </p>
+    </div>
+
+    <div class="mini-container">
+        <h3>Summary Table</h3>
+        <div class="summary-table-container">
+            <table class="summary-table">
+                <tr>
+                    <th>Property</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>Algorithm Type</td>
+                    <td>Internal</td>
+                </tr>
+                <tr>
+                    <td>In-Place?</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>Time Complexity (Best Case)</td>
+                    <td>O(n log n)</td>
+                </tr>
+                <tr>
+                    <td>Time Complexity (Average Case)</td>
+                    <td>O(n log n)</td>
+                </tr>
+                <tr>
+                    <td>Time Complexity (Worst Case)</td>
+                    <td>O(n²)</td>
+                </tr>
+                <tr>
+                    <td>Space Complexity</td>
+                    <td>O(log n)</td>
+                </tr>
+                <tr>
+                    <td>Stability</td>
+                    <td>Not Stable</td>
+                </tr>
+                <tr>
+                    <td>Depends on Structure or Content?</td>
+                    <td>Depends on both Structure and Content</td>
+                </tr>
+                <tr>
+                    <td>Comparison/Counting Sort Algorithm?</td>
+                    <td>Comparison-Based</td>
+                </tr>
+                <tr>
+                    <td>Algorithmic Approach</td>
+                    <td>Divide and Conquer</td>
+                </tr>
+            </table>
+        </div>
+    </div>    
+
+    <div class="mini-container">
+        <h3>Sorting Visualizer</h3>
+        <p>
+            Visualize this sorting algorithm and different other sorting algorithms in action. See this sorting algorithm others operate on your data.
+            Customize the data-values and control the visualization speed to enhance your learning experience.
+        </p>
+        <a href="{{ url_for('sorting_page') }}" class="button">Explore Sorting Visualizer</a>
+    </div>     
+{% endblock %}
